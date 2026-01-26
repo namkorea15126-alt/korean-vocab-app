@@ -1,29 +1,27 @@
 body {
-  font-family: -apple-system, Arial;
-  text-align: center;
-  background: #f2f2f2;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f8ff;
 }
 
-#card {
-  width: 280px;
-  height: 180px;
-  margin: 40px auto;
-  background: white;
-  border-radius: 15px;
-  font-size: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h1 {
+    margin-bottom: 20px;
 }
 
-#meaning {
-  display: none;
-  font-size: 20px;
-  color: #555;
+#word-container p {
+    font-size: 24px;
+    margin: 10px 0;
 }
 
-button {
-  padding: 12px;
-  margin: 5px;
-  font-size: 16px;
+#buttons button {
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#progress {
+    font-size: 18px;
+    margin-top: 15px;
 }
