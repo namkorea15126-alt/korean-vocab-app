@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Learn Korean Vocabulary</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <title>Học từ vựng tiếng Hàn</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>📘 Learn Korean Vocabulary</h1>
+    <h1>Học từ vựng tiếng Hàn</h1>
 
-  <div id="card">
-    <h2 id="korean">안녕하세요</h2>
-    <p id="meaning">Xin chào</p>
-    <button onclick="speak()">🔊 Phát âm</button>
-    <button onclick="nextWord()">➡️ Từ tiếp theo</button>
-  </div>
+    <div id="word-container">
+        <p id="korean">Từ tiếng Hàn</p>
+        <p id="vietnamese">Nghĩa tiếng Việt</p>
+        <p id="statusText">Trạng thái</p>
+        <p id="progress">Tiến độ</p>
+    </div>
 
-  <script src="app.js"></script>
+    <div id="buttons">
+        <button id="nextBtn">⏭️ Từ tiếp theo</button>
+        <button id="knownBtn">✅ Đã nhớ</button>
+        <button id="unknownBtn">❌ Chưa nhớ</button>
+        <button id="resetBtn">🔄 Reset</button>
+    </div>
+
+    <script src="words.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
-
