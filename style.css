@@ -5,7 +5,7 @@ body {
 }
 
 #word-container p {
-    font-size: 24px;
+    font-size: 48px;
     margin: 10px 0;
 }
 
@@ -20,4 +20,5 @@ body {
     font-size: 18px;
     margin-top: 15px;
 }
+
 
