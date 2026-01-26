@@ -3,39 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Học từ vựng tiếng Hàn</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-        p { font-size: 24px; margin: 10px 0; }
-        button { font-size: 20px; margin: 5px; padding: 10px 20px; }
-        #progress { font-size: 18px; margin-top: 15px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <!-- Cho PWA nếu muốn -->
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <h1>Học từ vựng tiếng Hàn</h1>
 
-    <p id="korean">Từ tiếng Hàn</p>
-    <p id="vietnamese">Nghĩa tiếng Việt</p>
-    <p id="statusText">Trạng thái</p>
-    <p id="progress">Tiến độ</p>
-
-    <div>
-        <button id="nextBtn">⏭️ Từ tiếp theo</button>
-        <button id="knownBtn">✅ Đã nhớ</button>
-        <button id="unknownBtn">❌ Chưa nhớ</button>
-        <button id="resetBtn">🔄 Reset</button>
-    </div>
-
-    <!-- Load danh sách từ trước -->
-    <script src="words.js"></script>
-    <!-- Load app.js sau HTML để chắc chắn các element tồn tại -->
-    <script src="app.js"></script>
-</body>
-</html>
-
-
-
-
-
-
-
-
+    <div id="word-container">
+        <p id="korean">Từ tiếng Hàn</p>
+        <p id="vietnamese">Nghĩa tiếng Việt</p>
+        <p id="statusText">Trạng thái</p>
+        <p id="progres
