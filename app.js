@@ -4,9 +4,9 @@ var words = [
   { id: 3, ko: "사랑", vi: "Tình yêu" },
   { id: 4, ko: "학교", vi: "Trường học" }
 ];
-var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
 var index = 0;
+var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 var showing = "ko";
 
 var korean = document.getElementById("korean");
@@ -47,6 +47,7 @@ var saved = localStorage.getItem("wordIndex");
 if (saved) index = parseInt(saved, 10);
 
 showWord();
+
 
 
 
