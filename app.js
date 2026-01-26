@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function showWord() {
         var remainingWords = getUnlearnedWords();
         if (remainingWords.length === 0) {
-            korean.textContent = "🎉 Bạn đã học xong tất cả từ!";
+            korean.textContent = "🎉 You have finished learning all the words!";
             vietnamese.textContent = "";
             statusText.textContent = "";
             return;
@@ -72,3 +72,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
     showWord();
 });
+
