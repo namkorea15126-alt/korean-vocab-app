@@ -1,8 +1,9 @@
 var words = [
-  { ko: "안녕하세요", vi: "Xin chào" },
-  { ko: "감사합니다", vi: "Cảm ơn" },
-  { ko: "사랑", vi: "Tình yêu" },
-  { ko: "학교", vi: "Trường học" }
+  { ko: "안녕하세요", vi: "Hello" },
+  { ko: "감사합니다", vi: "Thank you" },
+  { ko: "사랑", vi: "Love" },
+  { ko: "겨울", vi: "Winter" },
+  { ko: "학교", vi: "School" }
 ];
 
 var index = 0;
@@ -46,3 +47,4 @@ var saved = localStorage.getItem("wordIndex");
 if (saved) index = parseInt(saved, 10);
 
 showWord();
+
