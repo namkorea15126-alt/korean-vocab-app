@@ -1,5 +1,10 @@
 // ===================== 1. DATA =====================
-var words = WORDS;        // danh sách từ vựng
+var words = WORDS;      
+{ id: 1, ko: "안녕하세요", vi: "Xin chào" },
+  { id: 2, ko: "감사합니다", vi: "Cảm ơn" },
+  { id: 3, ko: "사랑", vi: "Tình yêu" },
+  { id: 4, ko: "학교", vi: "Trường học" }
+
 var index = 0;            // vị trí từ hiện tại
 var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
@@ -96,6 +101,7 @@ resetBtn.onclick = resetData;
 // ===================== 5. INIT =====================
 showWord();
 updateProgress();
+
 
 
 
