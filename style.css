@@ -1,0 +1,29 @@
+body {
+  font-family: -apple-system, Arial;
+  text-align: center;
+  background: #f2f2f2;
+}
+
+#card {
+  width: 280px;
+  height: 180px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 15px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#meaning {
+  display: none;
+  font-size: 20px;
+  color: #555;
+}
+
+button {
+  padding: 12px;
+  margin: 5px;
+  font-size: 16px;
+}
