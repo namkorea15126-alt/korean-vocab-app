@@ -1,18 +1,22 @@
 body {
-  font-family: Arial;
-  text-align: center;
-  background: #f4f4f4;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
 }
 
-#card {
-  background: white;
-  padding: 20px;
-  margin: 50px auto;
-  width: 300px;
-  border-radius: 10px;
+#word-container p {
+    font-size: 24px;
+    margin: 10px 0;
 }
 
-button {
-  margin: 5px;
-  padding: 10px;
+#buttons button {
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#progress {
+    font-size: 18px;
+    margin-top: 15px;
 }
