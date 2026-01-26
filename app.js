@@ -1,9 +1,9 @@
-// ===================== 1. DATA =====================
+// ===================== DATA =====================
 var words = WORDS;
 var index = 0;
 var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
-// ===================== 2. ELEMENTS =====================
+// ===================== ELEMENTS =====================
 var korean = document.getElementById("korean");
 var vietnamese = document.getElementById("vietnamese");
 var statusText = document.getElementById("statusText");
@@ -14,14 +14,14 @@ var knownBtn = document.getElementById("knownBtn");
 var unknownBtn = document.getElementById("unknownBtn");
 var resetBtn = document.getElementById("resetBtn");
 
-// ===================== 3. FUNCTIONS =====================
+// ===================== FUNCTIONS =====================
 
-// 3.1 Lấy danh sách từ chưa nhớ
+// Lấy danh sách từ chưa nhớ
 function getUnlearnedWords() {
     return words.filter(w => memoryData[w.id] !== "known");
 }
 
-// 3.2 Hiển thị từ hiện tại
+// Hiển thị từ hiện tại
 function showWord() {
     var remainingWords = getUnlearnedWords();
     if (remainingWords.length === 0) {
@@ -46,7 +46,7 @@ function showWord() {
     updateProgress();
 }
 
-// 3.3 Lưu trạng thái từ
+// Lưu trạng thái từ
 function saveWordStatus(status) {
     var remainingWords = getUnlearnedWords();
     if (remainingWords.length === 0) return;
@@ -54,11 +54,10 @@ function saveWordStatus(status) {
     var word = remainingWords[index % remainingWords.length];
     memoryData[word.id] = status;
     localStorage.setItem("memoryData", JSON.stringify(memoryData));
-
     console.log("Word ID " + word.id + " marked as " + status);
 }
 
-// 3.4 Chuyển sang từ tiếp theo
+// Chuyển sang từ tiếp theo
 function nextWord() {
     var remainingWords = getUnlearnedWords();
     if (remainingWords.length === 0) return;
@@ -68,7 +67,7 @@ function nextWord() {
     console.log("Next word, index:", index);
 }
 
-// 3.5 Cập nhật tiến độ
+// Cập nhật tiến độ
 function updateProgress() {
     var knownCount = Object.values(memoryData).filter(v => v === "known").length;
     var total = words.length;
@@ -76,7 +75,7 @@ function updateProgress() {
         " (" + Math.round((knownCount / total) * 100) + "%)";
 }
 
-// 3.6 Reset dữ liệu
+// Reset dữ liệu
 function resetData() {
     if (confirm("Bạn có chắc chắn muốn học lại từ đầu?")) {
         memoryData = {};
@@ -87,36 +86,20 @@ function resetData() {
     }
 }
 
-// ===================== 4. EVENTS =====================
-nextBtn.onclick = function() {
-    nextWord();
-};
-
-knownBtn.onclick = function() {
-    saveWordStatus("known");
-    nextWord();
-};
-
-unknownBtn.onclick = function() {
-    saveWordStatus("unknown");
-    nextWord();
-};
-
-resetBtn.onclick = resetData;
-
-// ===================== 5. INIT =====================
+// ===================== EVENTS =====================
 window.onload = function() {
     console.log("App loaded");
     showWord();
     updateProgress();
+
+    nextBtn.onclick = nextWord;
+    knownBtn.onclick = function() {
+        saveWordStatus("known");
+        nextWord();
+    };
+    unknownBtn.onclick = function() {
+        saveWordStatus("unknown");
+        nextWord();
+    };
+    resetBtn.onclick = resetData;
 };
-
-
-
-
-
-
-
-
-
-
