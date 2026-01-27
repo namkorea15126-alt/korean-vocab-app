@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
         korean.textContent = word.ko;
         vietnamese.textContent = word.vi;
 
-        if (memoryData[word.id] === "known") statusText.textContent = "✅ Đã nhớ";
-        else if (memoryData[word.id] === "unknown") statusText.textContent = "❌ Chưa nhớ";
-        else statusText.textContent = "🤔 Chưa đánh dấu";
+        if (memoryData[word.id] === "known") statusText.textContent = "✅ Remembered";
+        else if (memoryData[word.id] === "unknown") statusText.textContent = "❌ Not Remembered";
+        else statusText.textContent = "🤔 Unmarked";
 
         updateProgress();
     }
@@ -52,12 +52,12 @@ document.addEventListener("DOMContentLoaded", function() {
     function updateProgress() {
         var knownCount = Object.values(memoryData).filter(v => v === "known").length;
         var total = words.length;
-        progressText.textContent = "Đã nhớ: " + knownCount + " / " + total +
+        progressText.textContent = "Remembered: " + knownCount + " / " + total +
             " (" + Math.round((knownCount / total) * 100) + "%)";
     }
 
     function resetData() {
-        if (confirm("Bạn có chắc chắn muốn học lại từ đầu?")) {
+        if (confirm("Are you sure start learning again?")) {
             memoryData = {};
             localStorage.setItem("memoryData", JSON.stringify(memoryData));
             index = 0;
@@ -72,4 +72,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     showWord();
 });
+
 
