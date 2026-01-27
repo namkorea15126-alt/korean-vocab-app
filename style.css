@@ -1,49 +1,50 @@
-/* Toàn bộ trang */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     padding: 40px;
 }
 
-/* Tiêu đề */
+/* Tiêu đề chính */
 h1 {
-    font-size: 120px;
+    font-size: 120px;   /* đã giảm từ 300px xuống 180px */
     color: red;
+    margin-bottom: 50px;
+    line-height: 1.1;
 }
 
-/* Container từ vựng */
+/* Các dòng trong word container */
 #word-container p {
     margin: 20px 0;
 }
 
-/* Từ tiếng Hàn */
+/* Tiếng Hàn */
 #korean {
-    font-family: 'Noto Sans KR', 'Nanum Gothic', sans-serif; /* font Hàn Quốc dễ nhìn */
     font-size: 200px;
-    color: red;
+    font-weight: bold;
 }
 
 /* Nghĩa tiếng Việt */
 #vietnamese {
     font-size: 150px;
-    color: red;
+    color: #555;
 }
 
 /* Trạng thái */
 #statusText {
-    font-size: 50px;
+    font-size: 60px;
+    color: #007bff;
 }
 
 /* Tiến độ */
 #progress {
-    font-size: 30px;
-    margin-top: 15px;
+    font-size: 50px;
+    margin-top: 20px;
 }
 
 /* Nút bấm */
 #buttons button {
-    font-size: 20px;
-    margin: 5px;
-    padding: 10px 20px;
+    font-size: 40px;
+    margin: 10px;
+    padding: 20px 40px;
     cursor: pointer;
 }
