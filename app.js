@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var words = WORDS; // danh sách đã lọc type và trùng
+    var words = WORDS;
     var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
     var korean = document.getElementById("korean");
@@ -7,17 +7,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var statusText = document.getElementById("statusText");
     var progressText = document.getElementById("progress");
 
-    var nextBtn = document.getElementById("nextBtn");
     var knownBtn = document.getElementById("knownBtn");
     var unknownBtn = document.getElementById("unknownBtn");
     var resetBtn = document.getElementById("resetBtn");
 
-    // Lấy danh sách từ chưa học
     function getUnlearnedWords() {
         return words.filter(w => memoryData[w.id] !== "known");
     }
 
-    // Hiển thị từ hiện tại
     function showWord() {
         var remainingWords = getUnlearnedWords();
         if (remainingWords.length === 0) {
@@ -28,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Chọn từ ngẫu nhiên từ danh sách chưa học
+        // Chọn ngẫu nhiên từ chưa học
         var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
         korean.textContent = word.ko;
         vietnamese.textContent = word.vi;
@@ -40,17 +37,13 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgress();
     }
 
-    // Lưu trạng thái từ hiện tại
     function saveWordStatus(status) {
         var currentKo = korean.textContent;
         var word = words.find(w => w.ko === currentKo);
         if (!word) return;
         memoryData[word.id] = status;
         localStorage.setItem("memoryData", JSON.stringify(memoryData));
-    }
-
-    function nextWord() {
-        showWord();
+        showWord(); // Hiển thị từ mới ngay lập tức
     }
 
     function updateProgress() {
@@ -68,9 +61,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    nextBtn.addEventListener("click", nextWord);
-    knownBtn.addEventListener("click", function() { saveWordStatus("known"); nextWord(); });
-    unknownBtn.addEventListener("click", function() { saveWordStatus("unknown"); nextWord(); });
+    knownBtn.addEventListener("click", function() { saveWordStatus("known"); });
+    unknownBtn.addEventListener("click", function() { saveWordStatus("unknown"); });
     resetBtn.addEventListener("click", resetData);
 
     showWord();
