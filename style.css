@@ -11,7 +11,7 @@ body {
 
 /* Tăng cỡ chữ tiếng Hàn */
 #korean {
-    font-size: 72px;
+    font-size: 120px;
     font-weight: bold;
 }
 
@@ -26,6 +26,7 @@ body {
     font-size: 18px;
     margin-top: 15px;
 }
+
 
 
 
