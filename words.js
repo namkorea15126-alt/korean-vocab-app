@@ -156,3 +156,53 @@ var WORDS = [
   {id:155, ko:"꼬리", vi:"Tail"},
   {id:156, ko:"포크", vi:"Fork"}
 ];
+var newWords = [
+  {ko:"겨자", vi:"Mustard"},
+  {ko:"까치", vi:"Magpie"},
+  {ko:"아빠", vi:"Dad"},
+  {ko:"의자", vi:"Chair"},
+  {ko:"치마", vi:"Skirt"},
+  {ko:"차다", vi:"Kick / Wear (watch)"},
+  {ko:"차", vi:"Car / Tea"},
+  {ko:"기차", vi:"Train"},
+  {ko:"개다", vi:"Clear up (weather)"},
+  {ko:"따다", vi:"Pick / Pluck"},
+  {ko:"띠", vi:"Belt / Stripe"},
+  {ko:"뛰다", vi:"Run / Jump"},
+  {ko:"쓰다", vi:"Write / Use"},
+  {ko:"아우", vi:"Younger sibling (male)"},
+  {ko:"별", vi:"Star"},
+  {ko:"가을", vi:"Autumn"},
+  {ko:"월요일", vi:"Monday"},
+  {ko:"향수", vi:"Perfume"},
+  {ko:"형", vi:"Older brother (male)"},
+  {ko:"엄마", vi:"Mom"},
+  {ko:"달걀", vi:"Egg"},
+  {ko:"계란", vi:"Egg"},
+  {ko:"귤", vi:"Tangerine"},
+  {ko:"열다", vi:"Open"},
+  {ko:"경찰", vi:"Police"},
+  {ko:"겨울", vi:"Winter"},
+  {ko:"이", vi:"Tooth / This"},
+  {ko:"위", vi:"Above / Stomach"},
+  {ko:"라디오", vi:"Radio"},
+  {ko:"달력", vi:"Calendar"},
+  {ko:"화장실", vi:"Bathroom"},
+  {ko:"딸기", vi:"Strawberry"},
+  {ko:"칠판", vi:"Blackboard"},
+  {ko:"교실", vi:"Classroom"},
+  {ko:"거울", vi:"Mirror"},
+  {ko:"병원", vi:"Hospital"},
+  {ko:"가방", vi:"Bag"},
+  {ko:"무릎", vi:"Knee"},
+  {ko:"커피숍", vi:"Coffee shop"},
+  {ko:"컵", vi:"Cup"},
+  {ko:"앞", vi:"Front"}
+];
+
+// Thêm id tự động bắt đầu từ 157
+var startId = 157;
+newWords.forEach(function(word, i){
+    word.id = startId + i;
+    WORDS.push(word);
+});
