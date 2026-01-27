@@ -98,20 +98,6 @@ var WORDS = [
   {id:97, ko:"도시", vi:"Thành phố", type:"danh từ"},
   {id:98, ko:"마을", vi:"Làng", type:"danh từ"},
   {id:99, ko:"집", vi:"Home", type:"danh từ"},
-  {id:100, ko:"방", vi:"Phòng", type:"danh từ"},
-  {id:101, ko:"여우", vi:"Fox",
-  {id:102, ko:"여자", vi:"Woman",
-  {id:103, ko:"혀", vi:"Tongue",
-  {id:104, ko:"아버지", vi:"Father",
-  {id:105, ko:"소", vi:"Cow",
-  {id:106, ko:"시계", vi:"Watch",
-  {id:107, ko:"얘기", vi:"Story",
-  {id:108, ko:"비누", vi:"Soap",
-  {id:109, ko:"다리", vi:"Leg, Bridge", 
-  {id:110, ko:"게", vi:"Crab",
-  {id:111, ko:"개", vi:"Dog",
-  {id:112, ko:"오빠", vi:"Elder Brother",
-  {id:113, ko:"사", vi:"Number 4",
-  {id:114, ko:"어디", vi:"Where",
-  {id:115, ko:"구", vi:"Number 9"
+  {id:100, ko:"방", vi:"Phòng", type:"danh từ"}
+  
 ];
