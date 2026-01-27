@@ -4,6 +4,14 @@ body {
     padding: 40px;
 }
 
+/* Tiêu đề */
+h1 {
+    font-size: 48px;
+    color: red;
+    margin-bottom: 30px;
+}
+
+/* Khu vực từ vựng */
 #word-container p {
     font-size: 60px;
     margin: 20px 0;
@@ -11,15 +19,20 @@ body {
 
 /* Tăng cỡ chữ tiếng Hàn */
 #korean {
-    font-size: 300px;
+    font-size: 72px;
     font-weight: bold;
 }
 
-#buttons button {
-    font-size: 20px;
-    margin: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+/* Nghĩa tiếng Việt */
+#vietnamese {
+    font-size: 28px;
+    color: #555;
+}
+
+/* Trạng thái & tiến độ */
+#statusText {
+    font-size: 22px;
+    color: #007bff;
 }
 
 #progress {
@@ -27,9 +40,10 @@ body {
     margin-top: 15px;
 }
 
-
-
-
-
-
-
+/* Nút bấm */
+#buttons button {
+    font-size: 20px;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
