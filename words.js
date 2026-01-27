@@ -99,5 +99,4 @@ var WORDS = [
   {id:98, ko:"마을", vi:"Làng", type:"danh từ"},
   {id:99, ko:"집", vi:"Home", type:"danh từ"},
   {id:100, ko:"방", vi:"Phòng", type:"danh từ"}
-  
 ];
