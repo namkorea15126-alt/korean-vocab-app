@@ -9,6 +9,12 @@ body {
     margin: 20px 0;
 }
 
+/* Tăng cỡ chữ tiếng Hàn */
+#korean {
+    font-size: 72px;
+    font-weight: bold;
+}
+
 #buttons button {
     font-size: 20px;
     margin: 5px;
@@ -20,6 +26,8 @@ body {
     font-size: 18px;
     margin-top: 15px;
 }
+
+
 
 
 
