@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Lấy lesson lưu lần cuối
     var currentLessonKey = localStorage.getItem("currentLesson") || "lesson1";
     var words = WORDS_BY_LESSON[currentLessonKey].words;
     var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
         showWord();
     }
 
-    // Highlight lesson hiện tại
     function highlightLesson() {
         document.querySelectorAll(".lesson-btn").forEach(btn => {
             btn.classList.toggle("active", btn.dataset.lesson === currentLessonKey);
@@ -67,9 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".lesson-btn").forEach(btn => {
         btn.addEventListener("click", function () {
             loadLesson(this.dataset.lesson);
-            // Ẩn menu trên mobile
-            document.getElementById("sidebar").classList.remove("show");
+            document.getElementById("sidebar").classList.remove("show"); // ẩn menu trên mobile
         });
+    });
+
+    // Toggle menu mobile
+    document.getElementById("menuToggle").addEventListener("click", function() {
+        document.getElementById("sidebar").classList.toggle("show");
     });
 
     // Nút TTS
@@ -81,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Nút nhớ / không nhớ / reset
     knownBtn.onclick = () => saveWordStatus("known");
     unknownBtn.onclick = () => saveWordStatus("unknown");
     resetBtn.onclick = () => {
@@ -90,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         showWord();
     };
 
-    // Show lần đầu
     highlightLesson();
     showWord();
 });
