@@ -3,46 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <title>Learn Korean Vocabulary</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Tổng thể */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Tiêu đề chính */
+        h1 {
+            font-size: 120px; /* giảm từ 300px xuống 120px */
+            color: red;
+            margin-bottom: 50px;
+            line-height: 1.1;
+        }
+
+        /* Các dòng trong word container */
+        #word-container p {
+            margin: 20px 0;
+        }
+
+        /* Tiếng Hàn */
+        #korean {
+            font-size: 200px;
+            font-weight: bold;
+        }
+
+        /* Nghĩa tiếng Việt */
+        #vietnamese {
+            font-size: 150px;
+            color: #555;
+        }
+
+        /* Trạng thái */
+        #statusText {
+            font-size: 60px;
+            color: #007bff;
+        }
+
+        /* Tiến độ */
+        #progress {
+            font-size: 50px;
+            margin-top: 20px;
+        }
+
+        /* Nút bấm */
+        #buttons button {
+            font-size: 40px;
+            margin: 10px;
+            padding: 20px 40px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        #buttons button:hover {
+            transform: scale(1.1);
+            background-color: #f0f0f0;
+        }
+
+        /* Màu riêng cho các nút */
+        #knownBtn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #unknownBtn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #resetBtn {
+            background-color: #ffc107;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-
-<button id="toggleMenu">📚 Bài học</button>
-
-<div id="container">
-
-    <div id="sidebar">
-        <h2>Bài học</h2>
-        <button class="lesson-btn" data-lesson="lesson1">📘 Greetings</button>
-        <button class="lesson-btn" data-lesson="lesson2">🕒 Actions</button>
-        <button class="lesson-btn" data-lesson="lesson3">🎨 Adjectives</button>
-        <button class="lesson-btn" data-lesson="lesson4">👨‍👩‍👧 Family</button>
-        <button class="lesson-btn" data-lesson="lesson5">📍 Places</button>
-        <button class="lesson-btn" data-lesson="lesson6">🍎 Food</button>
-        <button class="lesson-btn" data-lesson="lesson7">📦 Objects</button>
-        <button class="lesson-btn" data-lesson="lesson8">👩‍⚕️ Jobs</button>
+    <h1>Learn Korean Vocabulary</h1>
+    <div id="word-container">
+        <p id="korean">Từ tiếng Hàn</p>
+        <p id="vietnamese">Nghĩa tiếng Việt</p>
+        <p id="statusText">Trạng thái</p>
+        <p id="progress">Tiến độ</p>
+    </div>
+    <div id="buttons">
+        <button id="knownBtn">✅ Remembered</button>
+        <button id="unknownBtn">❌ Not Remembered</button>
+        <button id="resetBtn">🔄 Reset</button>
     </div>
 
-    <div id="main">
-        <h1>Learn Korean Vocabulary</h1>
-
-        <div id="word-container">
-            <p id="korean">Từ tiếng Hàn</p>
-            <p id="vietnamese">Nghĩa tiếng Việt</p>
-            <p id="statusText"></p>
-            <p id="progress"></p>
-        </div>
-
-        <div id="buttons">
-            <button id="knownBtn">✅ Remembered</button>
-            <button id="unknownBtn">❌ Not Remembered</button>
-            <button id="resetBtn">🔄 Reset</button>
-        </div>
-    </div>
-
-</div>
-
-<script src="words.js"></script>
-<script src="app.js"></script>
+    <script src="words.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
