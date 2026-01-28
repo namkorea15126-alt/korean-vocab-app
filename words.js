@@ -8,7 +8,9 @@ var WORDS = [
   {id:7, ko:"마시다", vi:"Drink"},
   {id:8, ko:"좋다", vi:"Good"},
   {id:9, ko:"나쁘다", vi:"Bad"},
-  {id:10, ko:"학교", vi:"School"},
+  {id:10, ko:"학교", vi:"School"}
+  // ... có thể thêm tiếp các từ khác
+
   {id:11, ko:"공부하다", vi:"Study"},
   {id:12, ko:"책", vi:"Book"},
   {id:13, ko:"읽다", vi:"Read"},
@@ -247,4 +249,5 @@ var WORDS = [
   {id:246, ko:"당근", vi:"Carrot"},
   {id:247, ko:"마늘", vi:"Garlic"},
   {id:248, ko:"토마토", vi:"Tomato"},
-  {id:249, ko:"양배추", vi:"Cabbage"},
+  {id:249, ko:"양배추", vi:"Cabbage"}
+];
