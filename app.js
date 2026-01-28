@@ -1,116 +1,95 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
+    // Giả sử WORDS được định nghĩa trong words.js
+    var words = WORDS;
 
-  // ====== STATE ======
-  var savedLesson = localStorage.getItem("currentLesson") || "lesson1";
-  var currentLessonKey = savedLesson;
-  var words = WORDS_BY_LESSON[currentLessonKey].words;
+    // Lấy dữ liệu học đã lưu từ localStorage, nếu chưa có thì tạo mới
+    var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
-  var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
+    // Lấy các phần tử DOM
+    var korean = document.getElementById("korean");
+    var vietnamese = document.getElementById("vietnamese");
+    var statusText = document.getElementById("statusText");
+    var progressText = document.getElementById("progress");
+    var knownBtn = document.getElementById("knownBtn");
+    var unknownBtn = document.getElementById("unknownBtn");
+    var resetBtn = document.getElementById("resetBtn");
 
-  // ====== ELEMENTS ======
-  var korean = document.getElementById("korean");
-  var vietnamese = document.getElementById("vietnamese");
-  var statusText = document.getElementById("statusText");
-  var progressText = document.getElementById("progress");
-
-  var knownBtn = document.getElementById("knownBtn");
-  var unknownBtn = document.getElementById("unknownBtn");
-  var resetBtn = document.getElementById("resetBtn");
-
-  var sidebar = document.getElementById("sidebar");
-  var toggleMenuBtn = document.getElementById("toggleMenu");
-
-  // ====== WORD LOGIC ======
-  function getUnlearnedWords() {
-    return words.filter(w => memoryData[w.id] !== "known");
-  }
-
-  function showWord() {
-    var remainingWords = getUnlearnedWords();
-
-    if (remainingWords.length === 0) {
-      korean.textContent = "🎉 Finished this lesson!";
-      vietnamese.textContent = "";
-      statusText.textContent = "";
-      updateProgress();
-      return;
+    // Hàm lấy các từ chưa được đánh dấu "known"
+    function getUnlearnedWords() {
+        return words.filter(w => memoryData[w.id] !== "known");
     }
 
-    var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
-    korean.textContent = word.ko;
-    vietnamese.textContent = word.vi;
-    statusText.textContent = "";
-    updateProgress();
-  }
+    // Hàm hiển thị từ mới
+    function showWord() {
+        var remainingWords = getUnlearnedWords();
 
-  function saveWordStatus(status) {
-    var word = words.find(w => w.ko === korean.textContent);
-    if (!word) return;
+        if (remainingWords.length === 0) {
+            korean.textContent = "🎉 You have finished learning all the words!";
+            vietnamese.textContent = "";
+            statusText.textContent = "";
+            progressText.textContent = `Remembered: ${words.length} / ${words.length} (100%)`;
+            return;
+        }
 
-    memoryData[word.id] = status;
-    localStorage.setItem("memoryData", JSON.stringify(memoryData));
-    showWord();
-  }
+        // Chọn ngẫu nhiên một từ chưa học
+        var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
 
-  function updateProgress() {
-    var knownCount = words.filter(w => memoryData[w.id] === "known").length;
-    progressText.textContent =
-      "Remembered: " + knownCount + " / " + words.length;
-  }
+        korean.textContent = word.ko;
+        vietnamese.textContent = word.vi;
 
-  // ====== LESSON LOGIC ======
-  function highlightLesson(lessonKey) {
-    document.querySelectorAll(".lesson-btn").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.lesson === lessonKey);
+        // Hiển thị trạng thái từ
+        if (memoryData[word.id] === "known") {
+            statusText.textContent = "✅ Remembered";
+        } else if (memoryData[word.id] === "unknown") {
+            statusText.textContent = "❌ Not Remembered";
+        } else {
+            statusText.textContent = "🤔 Unmarked";
+        }
+
+        updateProgress();
+    }
+
+    // Lưu trạng thái từ hiện tại và hiển thị từ mới
+    function saveWordStatus(status) {
+        var currentKo = korean.textContent;
+        var word = words.find(w => w.ko === currentKo);
+        if (!word) return;
+
+        memoryData[word.id] = status;
+        localStorage.setItem("memoryData", JSON.stringify(memoryData));
+
+        showWord(); // Hiển thị từ mới ngay lập tức
+    }
+
+    // Cập nhật tiến độ học
+    function updateProgress() {
+        var knownCount = Object.values(memoryData).filter(v => v === "known").length;
+        var total = words.length;
+        var percent = total === 0 ? 0 : Math.round((knownCount / total) * 100);
+
+        progressText.textContent = `Remembered: ${knownCount} / ${total} (${percent}%)`;
+    }
+
+    // Reset dữ liệu học
+    function resetData() {
+        if (confirm("Are you sure you want to start learning again?")) {
+            memoryData = {};
+            localStorage.setItem("memoryData", JSON.stringify(memoryData));
+            showWord();
+        }
+    }
+
+    // Thêm sự kiện cho các nút
+    knownBtn.addEventListener("click", function() {
+        saveWordStatus("known");
     });
-  }
 
-  function loadLesson(lessonKey) {
-    currentLessonKey = lessonKey;
-    words = WORDS_BY_LESSON[lessonKey].words;
-    localStorage.setItem("currentLesson", lessonKey);
-
-    highlightLesson(lessonKey);
-    showWord();
-
-    // auto close menu on mobile
-    sidebar.classList.remove("open");
-  }
-
-  document.querySelectorAll(".lesson-btn").forEach(btn => {
-    btn.addEventListener("click", function () {
-      loadLesson(this.dataset.lesson);
+    unknownBtn.addEventListener("click", function() {
+        saveWordStatus("unknown");
     });
-  });
 
-  // ====== BUTTONS ======
-  knownBtn.onclick = () => saveWordStatus("known");
-  unknownBtn.onclick = () => saveWordStatus("unknown");
-  resetBtn.onclick = () => {
-    memoryData = {};
-    localStorage.removeItem("memoryData");
+    resetBtn.addEventListener("click", resetData);
+
+    // Hiển thị từ đầu tiên khi load trang
     showWord();
-  };
-
-  // ====== MENU TOGGLE ======
-  toggleMenuBtn.addEventListener("click", function () {
-    sidebar.classList.toggle("open");
-  });
-
-  // ====== SWIPE MENU (MOBILE) ======
-  let startX = 0;
-
-  document.addEventListener("touchstart", e => {
-    startX = e.touches[0].clientX;
-  });
-
-  document.addEventListener("touchend", e => {
-    let endX = e.changedTouches[0].clientX;
-    if (endX - startX > 80) sidebar.classList.add("open");     // swipe right
-    if (startX - endX > 80) sidebar.classList.remove("open");  // swipe left
-  });
-
-  // ====== INIT ======
-  highlightLesson(currentLessonKey);
-  showWord();
 });
