@@ -1,69 +1,76 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var words = WORDS;
-    var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
+document.addEventListener("DOMContentLoaded", function () {
 
-    var korean = document.getElementById("korean");
-    var vietnamese = document.getElementById("vietnamese");
-    var statusText = document.getElementById("statusText");
-    var progressText = document.getElementById("progress");
+  var currentLessonKey = "lesson1";
+  var words = WORDS_BY_LESSON[currentLessonKey].words;
 
-    var knownBtn = document.getElementById("knownBtn");
-    var unknownBtn = document.getElementById("unknownBtn");
-    var resetBtn = document.getElementById("resetBtn");
+  var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
-    function getUnlearnedWords() {
-        return words.filter(w => memoryData[w.id] !== "known");
+  var korean = document.getElementById("korean");
+  var vietnamese = document.getElementById("vietnamese");
+  var statusText = document.getElementById("statusText");
+  var progressText = document.getElementById("progress");
+
+  var knownBtn = document.getElementById("knownBtn");
+  var unknownBtn = document.getElementById("unknownBtn");
+  var resetBtn = document.getElementById("resetBtn");
+
+  function getUnlearnedWords() {
+    return words.filter(w => memoryData[w.id] !== "known");
+  }
+
+  function showWord() {
+    var remainingWords = getUnlearnedWords();
+
+    if (remainingWords.length === 0) {
+      korean.textContent = "🎉 Finished this lesson!";
+      vietnamese.textContent = "";
+      statusText.textContent = "";
+      updateProgress();
+      return;
     }
 
-    function showWord() {
-        var remainingWords = getUnlearnedWords();
-        if (remainingWords.length === 0) {
-            korean.textContent = "🎉 You have finished learning all the words!";
-            vietnamese.textContent = "";
-            statusText.textContent = "";
-            progressText.textContent = "Remembered: " + words.length + " / " + words.length + " (100%)";
-            return;
-        }
+    var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
+    korean.textContent = word.ko;
+    vietnamese.textContent = word.vi;
+    statusText.textContent = "";
+    updateProgress();
+  }
 
-        // Chọn ngẫu nhiên từ chưa học
-        var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
-        korean.textContent = word.ko;
-        vietnamese.textContent = word.vi;
+  function saveWordStatus(status) {
+    var word = words.find(w => w.ko === korean.textContent);
+    if (!word) return;
 
-        if (memoryData[word.id] === "known") statusText.textContent = "✅ Remembered";
-        else if (memoryData[word.id] === "unknown") statusText.textContent = "❌ Not Remembered";
-        else statusText.textContent = "🤔 Unmarked";
-
-        updateProgress();
-    }
-
-    function saveWordStatus(status) {
-        var currentKo = korean.textContent;
-        var word = words.find(w => w.ko === currentKo);
-        if (!word) return;
-        memoryData[word.id] = status;
-        localStorage.setItem("memoryData", JSON.stringify(memoryData));
-        showWord(); // Hiển thị từ mới ngay lập tức
-    }
-
-    function updateProgress() {
-        var knownCount = Object.values(memoryData).filter(v => v === "known").length;
-        var total = words.length;
-        progressText.textContent = "Remembered: " + knownCount + " / " + total +
-            " (" + Math.round((knownCount / total) * 100) + "%)";
-    }
-
-    function resetData() {
-        if (confirm("Are you sure start learning again?")) {
-            memoryData = {};
-            localStorage.setItem("memoryData", JSON.stringify(memoryData));
-            showWord();
-        }
-    }
-
-    knownBtn.addEventListener("click", function() { saveWordStatus("known"); });
-    unknownBtn.addEventListener("click", function() { saveWordStatus("unknown"); });
-    resetBtn.addEventListener("click", resetData);
-
+    memoryData[word.id] = status;
+    localStorage.setItem("memoryData", JSON.stringify(memoryData));
     showWord();
+  }
+
+  function updateProgress() {
+    var knownCount = words.filter(w => memoryData[w.id] === "known").length;
+    progressText.textContent =
+      "Remembered: " + knownCount + " / " + words.length;
+  }
+
+  function loadLesson(lessonKey) {
+    currentLessonKey = lessonKey;
+    words = WORDS_BY_LESSON[lessonKey].words;
+    showWord();
+  }
+
+  // Gắn menu bài học
+  document.querySelectorAll(".lesson-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+      loadLesson(this.dataset.lesson);
+    });
+  });
+
+  knownBtn.onclick = () => saveWordStatus("known");
+  unknownBtn.onclick = () => saveWordStatus("unknown");
+  resetBtn.onclick = () => {
+    memoryData = {};
+    localStorage.removeItem("memoryData");
+    showWord();
+  };
+
+  showWord();
 });
