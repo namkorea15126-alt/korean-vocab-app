@@ -9,8 +9,6 @@ var WORDS = [
   {id:8, ko:"좋다", vi:"Good"},
   {id:9, ko:"나쁘다", vi:"Bad"},
   {id:10, ko:"학교", vi:"School"}
-  // ... có thể thêm tiếp các từ khác
-
   {id:11, ko:"공부하다", vi:"Study"},
   {id:12, ko:"책", vi:"Book"},
   {id:13, ko:"읽다", vi:"Read"},
