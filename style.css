@@ -9,7 +9,19 @@ body {
     height: 100vh;
 }
 
-/* Sidebar bên trái */
+/* Nút toggle menu */
+#menuToggle {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    z-index: 1000;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Sidebar */
 #sidebar {
     width: 220px;
     background: #f4f4f4;
@@ -68,7 +80,7 @@ h1 {
 #korean-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* khoảng cách giữa từ và nút */
+    gap: 10px;
 }
 
 #korean {
@@ -114,19 +126,27 @@ h1 {
     cursor: pointer;
 }
 
-/* Mobile responsive: sidebar ẩn */
+/* Mobile responsive */
 @media (max-width: 768px) {
     #container {
         flex-direction: column;
     }
-    #sidebar {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 2px solid #ddd;
-        display: none;
-    }
-    #sidebar.show {
+
+    #menuToggle {
         display: block;
+    }
+
+    #sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        z-index: 999;
+        transition: left 0.3s ease;
+        width: 220px;
+    }
+
+    #sidebar.show {
+        left: 0;
     }
 }
