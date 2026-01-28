@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var unknownBtn = document.getElementById("unknownBtn");
     var resetBtn = document.getElementById("resetBtn");
 
-    // Lấy các từ chưa đánh dấu "known"
+    // Hàm lấy các từ chưa học hoặc chưa nhớ
     function getUnlearnedWords() {
         return words.filter(w => memoryData[w.id] !== "known");
     }
@@ -23,16 +23,14 @@ document.addEventListener("DOMContentLoaded", function() {
         var remainingWords = getUnlearnedWords();
 
         if (remainingWords.length === 0) {
-            korean.textContent = "🎉 You have finished learning all the words!";
+            korean.textContent = "🎉 Finished!";
             vietnamese.textContent = "";
             statusText.textContent = "";
             progressText.textContent = `Remembered: ${words.length} / ${words.length} (100%)`;
             return;
         }
 
-        // Chọn từ ngẫu nhiên
         var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
-
         korean.textContent = word.ko;
         vietnamese.textContent = word.vi;
 
@@ -69,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Reset dữ liệu học
     function resetData() {
-        if (confirm("Are you sure you want to start learning again?")) {
+        if (confirm("Are you sure you want to reset progress?")) {
             memoryData = {};
             localStorage.setItem("memoryData", JSON.stringify(memoryData));
             showWord();
