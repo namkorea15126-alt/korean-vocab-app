@@ -6,22 +6,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Learn Korean Vocabulary</h1>
 
-    <div id="word-container">
-        <p id="korean">Từ tiếng Hàn</p>
-        <p id="vietnamese">Nghĩa tiếng Việt</p>
-        <p id="statusText">Trạng thái</p>
-        <p id="progress">Tiến độ</p>
+<div id="container">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <h2>Bài học</h2>
+        <button class="lesson-btn" data-lesson="lesson1">📘 Basic</button>
+        <button class="lesson-btn" data-lesson="lesson2">📍 Place</button>
+        <button class="lesson-btn" data-lesson="lesson3">🍎 Food</button>
+        <button class="lesson-btn" data-lesson="lesson4">👩‍⚕️ Job</button>
     </div>
 
-    <div id="buttons">
-        <button id="knownBtn">✅ Remembered</button>
-        <button id="unknownBtn">❌ Not Remembered</button>
-        <button id="resetBtn">🔄 Reset</button>
+    <!-- MAIN CONTENT -->
+    <div id="main">
+        <h1>Learn Korean Vocabulary</h1>
+
+        <div id="word-container">
+            <p id="korean">Từ tiếng Hàn</p>
+            <p id="vietnamese">Nghĩa tiếng Việt</p>
+            <p id="statusText">Trạng thái</p>
+            <p id="progress">Tiến độ</p>
+        </div>
+
+        <div id="buttons">
+            <button id="knownBtn">✅ Remembered</button>
+            <button id="unknownBtn">❌ Not Remembered</button>
+            <button id="resetBtn">🔄 Reset</button>
+        </div>
     </div>
 
-    <script src="words.js"></script>
-    <script src="app.js"></script>
+</div>
+
+<script src="words.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
