@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     var words = WORDS;
 
-    // Lấy dữ liệu học đã lưu từ localStorage
+    // Lấy dữ liệu học đã lưu
     var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
     // DOM elements
@@ -13,10 +13,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var unknownBtn = document.getElementById("unknownBtn");
     var resetBtn = document.getElementById("resetBtn");
 
+    // Lấy các từ chưa đánh dấu "known"
     function getUnlearnedWords() {
         return words.filter(w => memoryData[w.id] !== "known");
     }
 
+    // Hiển thị từ
     function showWord() {
         var remainingWords = getUnlearnedWords();
 
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
+        // Chọn từ ngẫu nhiên
         var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
 
         korean.textContent = word.ko;
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         updateProgress();
     }
 
+    // Lưu trạng thái từ
     function saveWordStatus(status) {
         var currentKo = korean.textContent;
         var word = words.find(w => w.ko === currentKo);
@@ -55,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showWord();
     }
 
+    // Cập nhật tiến độ
     function updateProgress() {
         var knownCount = Object.values(memoryData).filter(v => v === "known").length;
         var total = words.length;
@@ -62,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         progressText.textContent = `Remembered: ${knownCount} / ${total} (${percent}%)`;
     }
 
+    // Reset dữ liệu học
     function resetData() {
         if (confirm("Are you sure you want to start learning again?")) {
             memoryData = {};
@@ -70,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    // Nút sự kiện
     knownBtn.addEventListener("click", function() {
         saveWordStatus("known");
     });
