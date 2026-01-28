@@ -1,43 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  var currentLessonKey = "lesson1";
-  var words = WORDS_BY_LESSON[currentLessonKey].words;
+  // ===== STATE =====
+  let currentLessonKey = localStorage.getItem("currentLesson") || "lesson1";
+  let words = WORDS_BY_LESSON[currentLessonKey].words;
+  let memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
 
-  var memoryData = JSON.parse(localStorage.getItem("memoryData")) || {};
+  // ===== ELEMENTS =====
+  const korean = document.getElementById("korean");
+  const vietnamese = document.getElementById("vietnamese");
+  const statusText = document.getElementById("statusText");
+  const progressText = document.getElementById("progress");
+  const speakBtn = document.getElementById("speakBtn");
 
-  var korean = document.getElementById("korean");
-  var vietnamese = document.getElementById("vietnamese");
-  var statusText = document.getElementById("statusText");
-  var progressText = document.getElementById("progress");
+  const knownBtn = document.getElementById("knownBtn");
+  const unknownBtn = document.getElementById("unknownBtn");
+  const resetBtn = document.getElementById("resetBtn");
 
-  var knownBtn = document.getElementById("knownBtn");
-  var unknownBtn = document.getElementById("unknownBtn");
-  var resetBtn = document.getElementById("resetBtn");
+  const sidebar = document.getElementById("sidebar");
+  const toggleMenuBtn = document.getElementById("toggleMenu");
+  const lessonList = document.getElementById("lessonList");
 
+  // ===== BUILD MENU =====
+  function buildLessonMenu() {
+    lessonList.innerHTML = "";
+
+    Object.keys(WORDS_BY_LESSON).forEach(key => {
+      const btn = document.createElement("button");
+      btn.className = "lesson-btn";
+      btn.dataset.lesson = key;
+      btn.textContent = WORDS_BY_LESSON[key].title;
+
+      btn.onclick = () => loadLesson(key);
+      lessonList.appendChild(btn);
+    });
+
+    highlightLesson(currentLessonKey);
+  }
+
+  function highlightLesson(key) {
+    document.querySelectorAll(".lesson-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.lesson === key);
+    });
+  }
+
+  // ===== WORD LOGIC =====
   function getUnlearnedWords() {
     return words.filter(w => memoryData[w.id] !== "known");
   }
 
   function showWord() {
-    var remainingWords = getUnlearnedWords();
+    const remaining = getUnlearnedWords();
 
-    if (remainingWords.length === 0) {
-      korean.textContent = "🎉 Finished this lesson!";
+    if (remaining.length === 0) {
+      korean.textContent = "🎉 Finished!";
       vietnamese.textContent = "";
-      statusText.textContent = "";
-      updateProgress();
+      progressText.textContent = "";
       return;
     }
 
-    var word = remainingWords[Math.floor(Math.random() * remainingWords.length)];
+    const word = remaining[Math.floor(Math.random() * remaining.length)];
     korean.textContent = word.ko;
     vietnamese.textContent = word.vi;
-    statusText.textContent = "";
     updateProgress();
   }
 
   function saveWordStatus(status) {
-    var word = words.find(w => w.ko === korean.textContent);
+    const word = words.find(w => w.ko === korean.textContent);
     if (!word) return;
 
     memoryData[word.id] = status;
@@ -46,24 +74,36 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateProgress() {
-    var knownCount = words.filter(w => memoryData[w.id] === "known").length;
-    progressText.textContent =
-      "Remembered: " + knownCount + " / " + words.length;
+    const knownCount = words.filter(w => memoryData[w.id] === "known").length;
+    progressText.textContent = `Remembered: ${knownCount} / ${words.length}`;
   }
 
-  function loadLesson(lessonKey) {
-    currentLessonKey = lessonKey;
-    words = WORDS_BY_LESSON[lessonKey].words;
+  // ===== LESSON =====
+  function loadLesson(key) {
+    currentLessonKey = key;
+    words = WORDS_BY_LESSON[key].words;
+    localStorage.setItem("currentLesson", key);
+
+    highlightLesson(key);
     showWord();
+    sidebar.classList.remove("open");
   }
 
-  // Gắn menu bài học
-  document.querySelectorAll(".lesson-btn").forEach(btn => {
-    btn.addEventListener("click", function () {
-      loadLesson(this.dataset.lesson);
-    });
-  });
+  // ===== TTS (KOREAN) =====
+  function speakKorean(text) {
+    if (!window.speechSynthesis) return;
 
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ko-KR";
+    utterance.rate = 0.8;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
+  }
+
+  speakBtn.onclick = () => speakKorean(korean.textContent);
+
+  // ===== BUTTONS =====
   knownBtn.onclick = () => saveWordStatus("known");
   unknownBtn.onclick = () => saveWordStatus("unknown");
   resetBtn.onclick = () => {
@@ -72,5 +112,19 @@ document.addEventListener("DOMContentLoaded", function () {
     showWord();
   };
 
+  // ===== MENU =====
+  toggleMenuBtn.onclick = () => sidebar.classList.toggle("open");
+
+  // ===== SWIPE (MOBILE) =====
+  let startX = 0;
+  document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+  document.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    if (endX - startX > 80) sidebar.classList.add("open");
+    if (startX - endX > 80) sidebar.classList.remove("open");
+  });
+
+  // ===== INIT =====
+  buildLessonMenu();
   showWord();
 });
