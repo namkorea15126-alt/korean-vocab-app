@@ -9,17 +9,26 @@
 
 <div id="container">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR: lesson list -->
     <div id="sidebar">
         <h2>Bài học</h2>
-        <button class="lesson-btn" data-lesson="lesson1">📘 Basic</button>
-        <button class="lesson-btn" data-lesson="lesson2">📍 Place</button>
-        <button class="lesson-btn" data-lesson="lesson3">🍎 Food</button>
-        <button class="lesson-btn" data-lesson="lesson4">👩‍⚕️ Job</button>
+        <!-- 
+          Các nút lesson phải khớp key trong WORDS_BY_LESSON
+          lesson1, lesson2, lesson3...
+        -->
+        <button class="lesson-btn" data-lesson="lesson1">📘 Greetings & Feelings</button>
+        <button class="lesson-btn" data-lesson="lesson2">🕒 Daily Actions</button>
+        <button class="lesson-btn" data-lesson="lesson3">🎨 Adjectives</button>
+        <button class="lesson-btn" data-lesson="lesson4">👨‍👩‍👧 Family</button>
+        <button class="lesson-btn" data-lesson="lesson5">📍 Places</button>
+        <button class="lesson-btn" data-lesson="lesson6">🍎 Food & Drinks</button>
+        <button class="lesson-btn" data-lesson="lesson7">📦 Objects</button>
+        <button class="lesson-btn" data-lesson="lesson8">👩‍⚕️ Occupations</button>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main">
+
         <h1>Learn Korean Vocabulary</h1>
 
         <div id="word-container">
@@ -34,10 +43,12 @@
             <button id="unknownBtn">❌ Not Remembered</button>
             <button id="resetBtn">🔄 Reset</button>
         </div>
+
     </div>
 
 </div>
 
+<!-- QUAN TRỌNG: words.js PHẢI load trước app.js -->
 <script src="words.js"></script>
 <script src="app.js"></script>
 
