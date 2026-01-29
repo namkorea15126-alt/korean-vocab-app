@@ -16,24 +16,26 @@ h1 {
     margin: 20px 0;
 }
 
-/* Từ Hàn (mặt trước) */
-#korean {
-    font-size: 200px;
+/* Nghĩa – mặt trước */
+#meaning {
+    font-size: 150px;
     font-weight: bold;
 }
 
+/* Click được */
 .clickable {
     cursor: pointer;
     user-select: none;
 }
 
-/* Nghĩa (mặt sau) */
-#vietnamese {
-    font-size: 150px;
-    color: #555;
+/* Chữ Hàn – mặt sau */
+#korean {
+    font-size: 200px;
+    font-weight: bold;
+    color: #333;
 }
 
-/* Ẩn nghĩa */
+/* Ẩn chữ Hàn */
 .hidden {
     display: none;
 }
