@@ -1,4 +1,7 @@
 var WORDS = [
+{ko:"명칭", vi:"Tên gọi, danh xưng (trang trọng)"},
+{ko:"이름", vi:"Tên"},
+{ko:"성함", vi:"Tên (kính ngữ, dùng lịch sự)"},
 {ko:"엄청", vi:"Rất, cực kỳ"},
 {ko:"예약하다", vi:"Đặt trước, đặt chỗ"},
 {ko:"미리", vi:"Trước, заранее"},
