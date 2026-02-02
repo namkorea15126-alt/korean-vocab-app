@@ -1,4 +1,6 @@
 var WORDS = [
+{ko:"국적", vi:"Quốc tịch"},
+{ko:"국가", vi:"Quốc gia / nhà nước, Dùng khi: văn bản hành chính, chính trị, pháp luật, báo chí"},
 {ko:"구성하다", vi:"Cấu thành, sắp xếp, tổ chức"},
 {ko:"교재", vi:"Giáo trình, tài liệu học"},
 {ko:"구성", vi:"Cấu trúc"},
@@ -218,7 +220,7 @@ var WORDS = [
 {ko:"꽃", vi:"Flower"},
 {ko:"컴퓨터", vi:"Computer"},
 {ko:"나쁘다", vi:"Bad"},
-{ko:"나라", vi:"Country / Nation"},
+{ko:"나라", vi:"Nước/đất nước, Dùng khi: Nói chung về một đất nước, cảm xúc, văn hóa, con người"},
 {ko:"나무", vi:"Tree"},
 {ko:"나이/연세/살", vi:"Age"},
 {ko:"남자", vi:"Male"},
