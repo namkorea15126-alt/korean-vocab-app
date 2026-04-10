@@ -628,7 +628,7 @@ var WORDS = [
 {ko:"타워", vi:"Tháp, Tower"},
 {ko:"경복궁", vi:"Cung Gyeongbok, Gyeongbokgung Palace"},
 {ko:"남산", vi:"Núi Namsan, Namsan"},
-{ko:"대전", vi:"Thành phố Daejeon, Daejeon"},
+{ko:"대전", vi:"Thành phố Daejeon, chiến tranh thế giới"},
 {ko:"대구", vi:"Thành phố Daegu, Daegu"},
 {ko:"서울역", vi:"Ga Seoul, Seoul Station"},
 {ko:"시청", vi:"UBND Thành phố"},
