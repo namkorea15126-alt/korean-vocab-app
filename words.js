@@ -483,7 +483,7 @@ var WORDS = [
 {ko:"여보", vi:"Anh / em (gọi vợ/chồng), Honey / Dear"},
 {ko:"실례", vi:"Xin lỗi / thất lễ, Excuse me / Rudeness"},
 {ko:"싸우다", vi:"Cãi nhau / đánh nhau, Fight / Argue"},
-{ko:"이상", vi:"Trở lên, Above / Over"},  
+{ko:"이상", vi:"Trở lên, kỳ lạ, bất thường"},  
 {ko:"이상하다", vi:"Kỳ lạ, Strange"},
 {ko:"비슷하다", vi:"Giống, tương tự, Similar"},
 {ko:"보험", vi:"Bảo hiểm, Insurance"},
