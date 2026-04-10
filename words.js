@@ -1368,6 +1368,7 @@ var WORDS = [
 {ko:"가짜", vi:"Fake"},
 {ko:"꿈", vi:"Dream"},
 {ko:"실수", vi:"Sơ suất, Mistake"},
+{ko:"실수하다", vi:"Mắc lỗi (vô ý), Make a mistake"},
 {ko:"잘못", vi:"Lỗi / điều sai, Fault"}, 
 
   /* Thiên nhiên */
@@ -1495,7 +1496,6 @@ var WORDS = [
 {ko:"걱정하다", vi:"Worry"},
 {ko:"잊어버리다", vi:"To forget"},
 {ko:"잃어버리다", vi:"To lose"},
-{ko:"실수하다", vi:"Mắc lỗi (vô ý), Make a mistake"},
 {ko:"잘못하다", vi:"Do wrong"},
 {ko:"대하다", vi:"Đối xử / đối diện, To treat / face"},
 {ko:"같다", vi:"Same / Similar"},
