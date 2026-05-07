@@ -244,7 +244,7 @@ var WORDS = [
 {ko:"스승", vi:"Thầy / người dạy, Teacher / Mentor"},
 {ko:"스승의 날", vi:"Ngày Nhà giáo, Teacher's Day"},
 
-{ko:"공사", vi:"Công trình / xây dựng, Construction"},
+{ko:"공사", vi:"Công trình (Đang thi công), Construction"},
 {ko:"공사하다", vi:"Thi công, Construct"},
 {ko:"궁금", vi:"Sự tò mò, Curiosity"},
 {ko:"궁금하다", vi:"Tò mò, Be curious"},
