@@ -22,10 +22,6 @@ var WORDS = [
 {ko:"사거리", vi:"Ngã tư, Four-way intersection"},
 {ko:"눈길", vi:"Đường tuyết / ánh nhìn, Snowy road / Gaze"},
 
-
-
-
-  
   /* Xây dựng / Kiến trúc */
 {ko:"건축", vi:"Kiến trúc / xây dựng, Architecture / Construction"},
 {ko:"건축하다", vi:"Xây dựng, Construct"},
@@ -33,15 +29,11 @@ var WORDS = [
 {ko:"공사하다", vi:"Thi công, Construct"},
 {ko:"신축하다", vi:"Xây mới, Build newly"},
 
-
   /* Nông nghiệp */
 {ko:"농사", vi:"Nông nghiệp / làm ruộng, Farming"},
 {ko:"농사짓다", vi:"Làm nông, Farm"},
 {ko:"심다", vi:"Trồng, Plant"},
 {ko:"기르다", vi:"Nuôi / trồng / phát triển, Raise / Grow"},
-
-
-  
 
   /* Y tế / Bệnh viện */
 {ko:"의료", vi:"Y tế, Medical care"},
@@ -61,14 +53,9 @@ var WORDS = [
 {ko:"응급이다 / 응급 상황이다", vi:"Ít dùng 응급하다 → Khẩn cấp, Be urgent"},
 {ko:"소화", vi:"Tiêu hóa, Digestion"},
 
-
-
-  
-
   /* Học tập */
 {ko:"예습", vi:"Học trước, Preview study"},
 {ko:"예습하다", vi:"Học trước, Preview"},
-
 
   /* Xã hội / Hoạt động */
 {ko:"봉사", vi:"Phục vụ / tình nguyện, Service / Volunteering"},
@@ -87,10 +74,6 @@ var WORDS = [
 {ko:"응원", vi:"Sự cổ vũ, Cheer / Support"},
 {ko:"응원하다", vi:"Cổ vũ, Cheer"},
 {ko:"국제", vi:"Quốc tế, International"},
-
-
-
-  
 
   /* Đời sống hằng ngày */
 {ko:"꺼내다", vi:"Lấy ra, Take out"},
@@ -128,12 +111,6 @@ var WORDS = [
 {ko:"그만", vi:"Dừng lại / thôi / chỉ có thế / đến mức đó"},
 {ko:"서두르다", vi:"Vội vàng, Hurry"},
 
-
-
-
-
-  
-
   /* Con người / Quan hệ */
 {ko:"조부모", vi:"Ông bà, Grandparents"},
 {ko:"서로", vi:"Lẫn nhau, Each other"},
@@ -148,10 +125,6 @@ var WORDS = [
 {ko:"그때", vi:"Lúc đó, At that time"},
 {ko:"모든", vi:"Tất cả, All"},
 
-
-
-  
-
   /* Thời gian / Dịp lễ */
 {ko:"연초", vi:"Đầu năm, Beginning of the year"},
 {ko:"연중", vi:"Suốt năm, Throughout the year"},
@@ -163,11 +136,6 @@ var WORDS = [
 {ko:"둘째", vi:"Thứ hai / con thứ hai, Second / Second child"},
 {ko:"셋째", vi:"Thứ ba / con thứ ba, Third / Third child"},
 {ko:"그때", vi:"Lúc đó, At that time"},
-
-
-
-
-  
 
   /* Thời tiết / Trạng thái */
 {ko:"일교차", vi:"Chênh lệch nhiệt độ ngày đêm, Daily temperature difference"},
@@ -188,11 +156,6 @@ var WORDS = [
 {ko:"배부르다", vi:"No (bụng), Be full"},
 {ko:"무척", vi:"Rất, Very"},
 
-
-
-
-  
-
   /* Khái niệm / Trừu tượng */
 {ko:"차이", vi:"Sự khác biệt, Difference"},
 {ko:"뜻", vi:"Ý nghĩa / ý định, Meaning / Intention"},
@@ -211,21 +174,11 @@ var WORDS = [
 {ko:"간단하다", vi:"Đơn giản, Simple"},
 {ko:"단순하다", vi:"Đơn giản (không phức tạp), Simple"},
 
-
-
-
-  
-
   /* Ăn uống / Sức khỏe */
 {ko:"단식", vi:"Nhịn ăn, Fasting"},
 {ko:"단식하다", vi:"Nhịn ăn, Fast"},
 {ko:"땀", vi:"Mồ hôi, Sweat"},
 {ko:"땀을 흘리다", vi:"Đổ mồ hôi, Sweat"},
-
-
-
-
-  
 
   /* Du lịch / Quốc tế */
 {ko:"외국", vi:"Nước ngoài, Foreign country"},
@@ -233,10 +186,6 @@ var WORDS = [
 {ko:"여행사", vi:"Công ty du lịch, Travel agency"},
 {ko:"일출", vi:"Mặt trời mọc, Sunrise"},
 {ko:"일몰", vi:"Mặt trời lặn, Sunset"},
-
-
-
-  
 
   /* Hành động phổ biến */
 {ko:"따라가다", vi:"Đi theo, Follow"},
